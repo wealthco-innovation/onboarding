@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Onboarding package — Adriano Leite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:root {
+  --off-white: #F6F6F6;
+  --paper: #FCFCFC;
+  --ink: #1F1F23;
+  --tealgray: #635E6E;
+  --green: #2E8871;
+  --green-bright: #31D8AE;
+  --blue: #6290AB;
+  --yellow: #EDCF79;
+  --line: rgba(31,31,35,.10);
+  --line-soft: rgba(31,31,35,.06);
+  --sans: 'Geist', -apple-system, sans-serif;
+  --mono: 'Geist Mono', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: env(safe-area-inset-top, 0px); }
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body {
+  font-family: var(--sans); background: var(--off-white); color: var(--ink);
+  letter-spacing: -.011em; line-height: 1.55; -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--green); color: #fff; }
+.wrap { max-width: 820px; margin: 0 auto; padding: 0 32px; }
+
+/* Hero */
+.hero { background: var(--ink); color: var(--off-white); position: relative; overflow: hidden; padding: 56px 0 60px; }
+.hero .wrap { position: relative; z-index: 2; }
+.hero-swoop { position: absolute; inset: 0; z-index: 1; opacity: .5; }
+.wordmark { font-size: 15px; font-weight: 600; letter-spacing: -.02em; margin-bottom: 32px; color: rgba(246,246,246,.5); }
+.wordmark .dot { color: var(--green-bright); }
+.hero h1 { font-size: 42px; font-weight: 500; letter-spacing: -.04em; line-height: 1.05; margin-bottom: 18px; }
+.hero h1 em { font-style: normal; color: var(--green-bright); }
+.hero .lede { font-size: 16px; line-height: 1.6; color: rgba(246,246,246,.7); max-width: 560px; font-weight: 300; }
+.hero .meta { margin-top: 32px; display: flex; gap: 28px; flex-wrap: wrap; }
+.hero .meta-item { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: rgba(246,246,246,.4); }
+.hero .meta-item span { color: rgba(246,246,246,.8); display: block; margin-top: 4px; font-size: 13px; letter-spacing: 0; text-transform: none; font-family: var(--sans); }
+
+/* Nav */
+.nav { position: sticky; top: 0; z-index: 40; background: var(--paper); border-bottom: 1px solid var(--line); }
+.nav .wrap { display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.nav .wrap::-webkit-scrollbar { display: none; }
+.nav a { font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--tealgray); padding: 14px 16px; white-space: nowrap; text-decoration: none; border-bottom: 2px solid transparent; transition: all .15s ease; flex-shrink: 0; }
+.nav a:hover { color: var(--ink); }
+.nav a.active { color: var(--green); border-bottom-color: var(--green); }
+
+/* Sections */
+.sec { padding: 48px 0; }
+.sec + .sec { border-top: 1px solid var(--line); }
+.sec-tag { font-family: var(--mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
+h2 { font-size: 28px; font-weight: 500; letter-spacing: -.035em; line-height: 1.1; margin-bottom: 10px; }
+h2 em { font-style: normal; color: var(--green); }
+.sec-intro { font-size: 15px; color: var(--tealgray); max-width: 580px; line-height: 1.6; margin-bottom: 32px; }
+
+/* Contacts */
+.contacts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.contact { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; display: flex; gap: 14px; align-items: flex-start; }
+.contact .ci { width: 36px; height: 36px; border-radius: 9px; background: rgba(46,136,113,.1); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+.contact .ci i { font-size: 17px; color: var(--green); }
+.contact h4 { font-size: 15px; font-weight: 600; letter-spacing: -.01em; margin-bottom: 2px; }
+.contact p { font-size: 13px; color: var(--tealgray); line-height: 1.45; }
+
+/* Focus cards */
+.focus-list { display: flex; flex-direction: column; gap: 10px; }
+.focus-card { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 18px 22px; display: grid; grid-template-columns: 40px 1fr auto; gap: 16px; align-items: center; }
+.focus-num { width: 34px; height: 34px; border-radius: 9px; background: var(--ink); color: #fff; font-family: var(--mono); font-size: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+.focus-card h4 { font-size: 15px; font-weight: 600; letter-spacing: -.01em; margin-bottom: 3px; }
+.focus-card p { font-size: 13px; color: var(--tealgray); line-height: 1.45; }
+.focus-when { font-family: var(--mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--green); background: rgba(46,136,113,.1); border-radius: 6px; padding: 4px 9px; white-space: nowrap; align-self: start; }
+
+/* Rock cards */
+.rock-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.rock { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 22px 22px 18px; }
+.rock-num { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }
+.rock h4 { font-size: 16px; font-weight: 600; letter-spacing: -.02em; margin-bottom: 8px; }
+.rock p { font-size: 13px; color: var(--tealgray); line-height: 1.5; }
+
+/* Data flow */
+.flow { display: flex; align-items: center; gap: 0; margin-top: 24px; flex-wrap: wrap; justify-content: center; }
+.flow-node { background: var(--ink); color: #fff; border-radius: 10px; padding: 14px 20px; text-align: center; font-size: 13px; font-weight: 500; }
+.flow-node .flow-sub { font-family: var(--mono); font-size: 10px; color: rgba(246,246,246,.5); letter-spacing: .04em; display: block; margin-top: 3px; font-weight: 400; }
+.flow-arrow { color: var(--green); font-size: 20px; padding: 0 10px; flex: 0 0 auto; }
+
+/* Tool rows */
+.tool-list { display: flex; flex-direction: column; gap: 10px; }
+.tool-row { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 18px 22px; display: grid; grid-template-columns: 200px 1fr; gap: 16px; align-items: baseline; }
+.tool-name { font-weight: 600; font-size: 15px; letter-spacing: -.01em; }
+.tool-desc { font-size: 13.5px; color: var(--tealgray); line-height: 1.5; }
+.badge { display: inline-block; font-family: var(--mono); font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; padding: 2px 8px; border-radius: 5px; margin-left: 8px; vertical-align: middle; }
+.badge-ref { background: rgba(48,111,147,.1); color: #306F93; }
+
+/* Initiative cards */
+.initiative-list { display: flex; flex-direction: column; gap: 12px; }
+.initiative { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 22px 24px; }
+.initiative-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.initiative-icon { width: 36px; height: 36px; border-radius: 9px; background: rgba(46,136,113,.1); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+.initiative-icon i { font-size: 17px; color: var(--green); }
+.initiative-head h4 { font-size: 17px; font-weight: 600; letter-spacing: -.02em; }
+.initiative-head .init-tag { margin-left: auto; font-family: var(--mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--green); background: rgba(46,136,113,.1); border-radius: 6px; padding: 4px 9px; white-space: nowrap; }
+.initiative p { font-size: 14px; color: var(--tealgray); line-height: 1.55; }
+.initiative .role-line { margin-top: 10px; font-size: 13px; font-weight: 500; color: var(--ink); }
+
+/* Doc list */
+.doc-list { display: flex; flex-direction: column; gap: 10px; }
+.doc-row { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 18px 22px; display: flex; gap: 14px; align-items: flex-start; }
+.doc-row i { font-size: 18px; color: var(--green); margin-top: 2px; flex: 0 0 auto; }
+.doc-row h4 { font-size: 15px; font-weight: 600; margin-bottom: 3px; letter-spacing: -.01em; }
+.doc-row p { font-size: 13px; color: var(--tealgray); line-height: 1.5; }
+
+/* Schedule */
+.schedule { border-top: 1px solid var(--line); }
+.sched-row { display: grid; grid-template-columns: 140px 1fr; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--line); align-items: start; }
+.sched-day { font-family: var(--mono); font-size: 12px; color: var(--green); letter-spacing: .02em; padding-top: 2px; }
+.sched-row h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; letter-spacing: -.01em; }
+.sched-row p { font-size: 13.5px; color: var(--tealgray); line-height: 1.5; }
+.sched-tag { display: inline-block; font-family: var(--mono); font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--tealgray); margin-bottom: 6px; }
+
+/* Callout */
+.callout { border-radius: 12px; padding: 20px 22px; display: flex; gap: 14px; align-items: flex-start; margin-top: 24px; }
+.callout i { font-size: 18px; margin-top: 2px; flex: 0 0 auto; }
+.callout .ct { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+.callout p { font-size: 13.5px; line-height: 1.5; }
+.callout.warn { background: rgba(189,149,33,.09); border: 1px solid rgba(189,149,33,.28); }
+.callout.warn i { color: #BD9521; }
+.callout.warn p { color: #7a6418; }
+.callout.green { background: rgba(46,136,113,.07); border: 1px solid rgba(46,136,113,.24); }
+.callout.green i { color: var(--green); }
+.callout.green p { color: var(--tealgray); }
+.callout.dark { background: var(--ink); color: rgba(246,246,246,.78); }
+.callout.dark i { color: var(--green-bright); }
+.callout.dark .ct { color: #fff; }
+
+/* Cadence */
+.cadence-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; }
+.cadence-item { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
+.cadence-item h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; letter-spacing: -.01em; }
+.cadence-item p { font-size: 13px; color: var(--tealgray); line-height: 1.5; }
+.cadence-item code { font-family: var(--mono); font-size: 11.5px; background: var(--off-white); border: 1px solid var(--line); border-radius: 5px; padding: 2px 6px; }
+.sub-heading { font-size: 13px; font-family: var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--tealgray); margin: 0 0 16px; }
+.sub-heading-gap { margin: 28px 0 16px; }
+
+/* Working with me */
+.wwm-list { display: flex; flex-direction: column; gap: 0; }
+.wwm-item { padding: 16px 0; border-bottom: 1px solid var(--line-soft); display: flex; gap: 14px; align-items: flex-start; font-size: 14.5px; line-height: 1.55; }
+.wwm-item i { color: var(--green); font-size: 17px; margin-top: 2px; flex: 0 0 auto; }
+
+.foot { padding: 32px 0; text-align: center; font-family: var(--mono); font-size: 11px; color: rgba(31,31,35,.3); letter-spacing: .04em; }
+
+@media (max-width: 640px) {
+  .wrap { padding: 0 20px; }
+  .hero h1 { font-size: 32px; }
+  .contacts, .cadence-grid, .rock-grid { grid-template-columns: 1fr; }
+  .tool-row { grid-template-columns: 1fr; gap: 4px; }
+  .sched-row { grid-template-columns: 100px 1fr; gap: 12px; }
+  .focus-card { grid-template-columns: 40px 1fr; }
+  .focus-when { grid-column: 2; }
+  .flow { flex-direction: column; gap: 8px; }
+  .flow-arrow { transform: rotate(90deg); padding: 0; }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --off-white: #1a1a1e; --paper: #222226; --ink: #F6F6F6; --tealgray: #a09bab;
+    --line: rgba(246,246,246,.10); --line-soft: rgba(246,246,246,.06);
+  }
+  :root:not([data-theme="light"]) .hero { background: #111114; }
+  :root:not([data-theme="light"]) .nav { background: #222226; }
+  :root:not([data-theme="light"]) .focus-num { background: #333; }
+  :root:not([data-theme="light"]) .flow-node { background: #333; }
+}
+:root[data-theme="dark"] {
+  --off-white: #1a1a1e; --paper: #222226; --ink: #F6F6F6; --tealgray: #a09bab;
+  --line: rgba(246,246,246,.10); --line-soft: rgba(246,246,246,.06);
+}
+:root[data-theme="dark"] .hero { background: #111114; }
+:root[data-theme="dark"] .nav { background: #222226; }
+:root[data-theme="dark"] .focus-num { background: #333; }
+:root[data-theme="dark"] .flow-node { background: #333; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <svg class="hero-swoop" viewBox="0 0 1000 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="sw" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#31D8AE" stop-opacity=".5"/>
+        <stop offset="1" stop-color="#2E8871" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <path d="M-50 320 C 200 180, 380 360, 620 200 S 980 60, 1100 120" fill="none" stroke="url(#sw)" stroke-width="2.5" opacity=".7"/>
+    <path d="M-50 380 C 250 280, 420 400, 700 260 S 980 160, 1100 200" fill="none" stroke="url(#sw)" stroke-width="1.5" opacity=".4"/>
+  </svg>
+  <div class="wrap">
+    <div class="wordmark">WealthCo<span class="dot">.</span></div>
+    <h1>Welcome, <em>Adriano</em></h1>
+    <p class="lede">Your onboarding package for the Data and Product Manager role. Everything you need for your first 30 days and beyond, in one place.</p>
+    <div class="meta">
+      <div class="meta-item">Role<span>Data and Product Manager</span></div>
+      <div class="meta-item">Reports to<span>Bryton Udy</span></div>
+      <div class="meta-item">Start date<span>October 5, 2026</span></div>
+      <div class="meta-item">Location<span>Calgary, AB</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap">
+    <a href="#contacts" class="active">Contacts</a>
+    <a href="#focuses">First 30 days</a>
+    <a href="#rocks">Q4 rocks</a>
+    <a href="#initiatives">Initiatives</a>
+    <a href="#tools">Tools</a>
+    <a href="#documents">Documents</a>
+    <a href="#recurring">Meetings</a>
+    <a href="#cadence">How we work</a>
+    <a href="#working">Working with Bryton</a>
+  </div>
+</nav>
+
+<!-- KEY CONTACTS -->
+<div class="wrap">
+  <section class="sec" id="contacts">
+    <div class="sec-tag">People</div>
+    <h2>Key <em>contacts</em></h2>
+    <p class="sec-intro">The people you will work with most in your first weeks. Reach out directly; everyone is expecting you.</p>
+    <div class="contacts">
+      <div class="contact">
+        <div class="ci"><i class="ri-men-line"></i></div>
+        <div>
+          <h4>Bryton Udy</h4>
+          <p>Your manager. Leads innovation, digital transformation, and the Helix migration. Your primary point of contact for priorities and direction.</p>
+        </div>
+      </div>
+      <div class="contact">
+        <div class="ci"><i class="ri-women-line"></i></div>
+        <div>
+          <h4>Jazzy Reyes</h4>
+          <p>Executive and operations assistant to Bryton. PM on the Helix migration. Coordinates your onboarding logistics and meeting cadence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FIRST 30 DAYS -->
+<div class="wrap">
+  <section class="sec" id="focuses">
+    <div class="sec-tag">Your first 30 days</div>
+    <h2>Five <em>focuses</em></h2>
+    <p class="sec-intro">You already know our business from the inside. Now you get to shape it. These are your priorities for the first 30 days.</p>
+    <div class="focus-list">
+      <div class="focus-card">
+        <div class="focus-num">01</div>
+        <div>
+          <h4>Dashboards back up and running</h4>
+          <p>Get existing dashboards back up and functional, with some of the additional reports delivered within week 1.</p>
+        </div>
+        <span class="focus-when">Week 1</span>
+      </div>
+      <div class="focus-card">
+        <div class="focus-num">02</div>
+        <div>
+          <h4>Get to know the Data Lake</h4>
+          <p>Familiarise yourself with the Data Lake in its current state: migrated over from Motiv, hosted on AWS, with Snowflake as the interface. Get familiar with the AI read view in Claude, as it will be yours to own.</p>
+        </div>
+        <span class="focus-when">Weeks 1-2</span>
+      </div>
+      <div class="focus-card">
+        <div class="focus-num">03</div>
+        <div>
+          <h4>Prepare client data for Helix</h4>
+          <p>Continue preparing existing client data to be mapped for migration into IA Pipeline (to be known as Helix), which will become the team's main working tool for CRM and servicing.</p>
+        </div>
+        <span class="focus-when">Ongoing</span>
+      </div>
+      <div class="focus-card">
+        <div class="focus-num">04</div>
+        <div>
+          <h4>Move reporting into Pipeline</h4>
+          <p>Prepare data and progress for dashboarding and reporting for all relevant stakeholders within Pipeline instead of Power BI, so members have one place to go for reporting.</p>
+        </div>
+        <span class="focus-when">Weeks 2-4</span>
+      </div>
+      <div class="focus-card">
+        <div class="focus-num">05</div>
+        <div>
+          <h4>Find the daily rhythm of progress</h4>
+          <p>Small, steady progress every day. Share what moved, what is blocked, and what is next.</p>
+        </div>
+        <span class="focus-when">Every day</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Q4 ROCKS -->
+<div class="wrap">
+  <section class="sec" id="rocks">
+    <div class="sec-tag">Q4 2026</div>
+    <h2>Our <em>rocks</em></h2>
+    <p class="sec-intro">The three rocks for the rest of the year. Your first 30 days feed directly into these.</p>
+    <div class="rock-grid">
+      <div class="rock">
+        <div class="rock-num">Rock 01</div>
+        <h4>CRM into Pipeline</h4>
+        <p>Migrate the team from CRM into Pipeline as the main client relationship and servicing tool. CRM first, then Operations in Q1 2027.</p>
+      </div>
+      <div class="rock">
+        <div class="rock-num">Rock 02</div>
+        <h4>Reporting live in Pipeline</h4>
+        <p>Data, reporting, and dashboarding live in Pipeline. Power BI as the interim solution.</p>
+      </div>
+      <div class="rock">
+        <div class="rock-num">Rock 03</div>
+        <h4>Data you can ask questions</h4>
+        <p>Data is queryable, so it is not simply numbers on a dashboard. The ELT can ask it questions. Possibly the wider team too, with the right permissioning.</p>
+      </div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-node">Data Lake<span class="flow-sub">AWS + Snowflake</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Pipeline<span class="flow-sub">Reporting, CRM, and data in one place</span></div>
+    </div>
+  </section>
+</div>
+
+<!-- CURRENT INITIATIVES -->
+<div class="wrap">
+  <section class="sec" id="initiatives">
+    <div class="sec-tag">Current work</div>
+    <h2>Current <em>initiatives</em></h2>
+    <p class="sec-intro">The three initiatives you are walking into. Your focuses and rocks connect to these.</p>
+    <div class="initiative-list">
+      <div class="initiative">
+        <div class="initiative-head">
+          <div class="initiative-icon"><i class="ri-database-2-line"></i></div>
+          <h4>Helix migration</h4>
+          <span class="init-tag">Q4 rock</span>
+        </div>
+        <p>Migrate WealthCo's sales team off Dynamics 365 and onto IA Pipeline (Helix) by December 7, 2026. Dynamics goes read-only on cutover day. Four parallel workstreams behind three gates. You own the data workstream: inventory verification, field mapping, data cleansing, dry runs, and reconciliation. You also own the parity backlog in GitHub Projects, writing acceptance criteria and accepting features at each Thursday demo.</p>
+        <div class="role-line">Your role: data lead and assistant product manager</div>
+        <p style="margin-top:10px;"><a href="https://claude.ai/artifact/EVaATQY2NRGSm9EJGZaZRu" style="color:var(--green);text-decoration:none;font-size:13px;">View migration plan &rarr;</a></p>
+      </div>
+      <div class="initiative">
+        <div class="initiative-head">
+          <div class="initiative-icon"><i class="ri-slideshow-line"></i></div>
+          <h4>Innovation Programme</h4>
+          <span class="init-tag">Bi-weekly</span>
+        </div>
+        <p>Bi-weekly team training sessions covering AI tool adoption, workflow mapping, and SOP development. Runs across approximately 12 strike team members. You will help lead training sessions and contribute to the curriculum arc, which sequences topics from workflow archaeology through to AI-augmented client conversations.</p>
+        <div class="role-line">Your role: training session co-lead</div>
+        <p style="margin-top:10px;"><a href="https://wealthco-innovation.github.io/programme/" style="color:var(--green);text-decoration:none;font-size:13px;">View programme hub &rarr;</a></p>
+      </div>
+      <div class="initiative">
+        <div class="initiative-head">
+          <div class="initiative-icon"><i class="ri-flow-chart"></i></div>
+          <h4>AI workflow discovery</h4>
+          <span class="init-tag">Ongoing</span>
+        </div>
+        <p>Discovering, scoring, and redesigning workflows across the business for AI enablement. Includes conducting discovery interviews with team leads, producing workflow score cards, and identifying high-leverage transformation candidates. Feeds directly into the Innovation Programme curriculum and the SOP repository.</p>
+        <div class="role-line">Your role: discovery and scoring contributor</div>
+        <p style="margin-top:10px;"><a href="https://app.notion.com/p/Project-Overview-38e25c8e22248085940fdfc42a096207?source=copy_link" style="color:var(--green);text-decoration:none;font-size:13px;">View project overview &rarr;</a></p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- TOOLS & ACCESS -->
+<div class="wrap">
+  <section class="sec" id="tools">
+    <div class="sec-tag">Tools</div>
+    <h2>Your <em>tools</em> and access</h2>
+    <p class="sec-intro">The platforms you will use day to day. Flag anything missing to Jazzy.</p>
+    <div class="tool-list">
+      <div class="tool-row">
+        <div class="tool-name">Claude</div>
+        <div class="tool-desc">AI assistant used across the team. Team licence. You will use this for workflow design, prompting, the Innovation Programme sessions, and the AI read view of the Data Lake. <a href="https://claude.ai" style="color:var(--green);text-decoration:none;">Login &rarr;</a></div>
+      </div>
+      <div class="tool-row">
+        <div class="tool-name">IA Pipeline (Helix)</div>
+        <div class="tool-desc">WealthCo's CRM and sales platform. The team is migrating from Dynamics 365 to this platform by December 7. You own the data and parity backlog. <a href="https://app.iapipeline.com" style="color:var(--green);text-decoration:none;">Login &rarr;</a></div>
+      </div>
+      <div class="tool-row">
+        <div class="tool-name">Data Lake</div>
+        <div class="tool-desc">Migrated from Motiv, hosted on AWS, with Snowflake as the query interface. Yours to own. Powers dashboards, reporting, and the Claude AI read view.</div>
+      </div>
+      <div class="tool-row">
+        <div class="tool-name">GitHub</div>
+        <div class="tool-desc">IA Pipeline repository. You will use GitHub Projects to manage the parity backlog, write acceptance criteria, and track bugs. An invite has been sent to your WealthCo email. <a href="https://github.com" style="color:var(--green);text-decoration:none;">Login &rarr;</a></div>
+      </div>
+      <div class="tool-row">
+        <div class="tool-name">90.io</div>
+        <div class="tool-desc">EOS rock tracking. The Helix migration Q4 rock lives here. Read access so you can see progress and scorecard updates. <a href="https://app.ninety.io" style="color:var(--green);text-decoration:none;">Login &rarr;</a></div>
+      </div>
+      <div class="tool-row">
+        <div class="tool-name">Notion</div>
+        <div class="tool-desc">Used for internal project tracking, meeting logs, and reference documentation. Bryton's "working with me" document lives here. An invite will be sent to your WealthCo email.</div>
+      </div>
+      <div class="tool-row">
+        <div class="tool-name">SharePoint team library</div>
+        <div class="tool-desc">All IA Pipeline migration files live here: RAID log, approval packs, mapping files, training recordings, and data reconciliation outputs. This is the governed location for anything that names clients. <a href="https://wealthcoportal.sharepoint.com/:f:/r/sites/WC-Operations/Shared%20Documents/Innovation?d=w1e9661c479794035a5d239b4a9cb5fa1&csf=1&web=1&e=9sd8mt" style="color:var(--green);text-decoration:none;">Innovation folder &rarr;</a></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- DOCUMENTS -->
+<div class="wrap">
+  <section class="sec" id="documents">
+    <div class="sec-tag">Documents</div>
+    <h2>Key <em>documents</em></h2>
+    <p class="sec-intro">Reference materials to read during your first week.</p>
+    <div class="doc-list">
+      <div class="doc-row">
+        <i class="ri-user-heart-line"></i>
+        <div>
+          <h4>Working with Bryton (Notion)</h4>
+          <p>Bryton's communication preferences, decision-making style, and how he likes to work. Read this before your first week. Summary below. <a href="https://app.notion.com/p/brytonudy/Working-with-Me-Bryton-Udy-1d8bcfdc94b58071a1d6ec438cce6641?source=copy_link" style="color:var(--green);text-decoration:none;">Open in Notion &rarr;</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+
+<!-- RECURRING MEETINGS -->
+<div class="wrap">
+  <section class="sec" id="recurring">
+    <div class="sec-tag">After week one</div>
+    <h2>Recurring <em>meetings</em></h2>
+    <p class="sec-intro">Your standing meeting cadence starting the week of October 12.</p>
+    <div class="schedule">
+      <div class="sched-row">
+        <div class="sched-day">Daily, 15 min</div>
+        <div>
+          <div class="sched-tag">First two weeks · October 5 through 17</div>
+          <h4>Daily check-in with Bryton</h4>
+          <p>Bryton and Adriano. 15 minutes to align on priorities, answer questions, and surface blockers. Transitions to the weekly stand-up after week two.</p>
+        </div>
+      </div>
+      <div class="sched-row">
+        <div class="sched-day">Weekly, Mondays</div>
+        <div>
+          <div class="sched-tag">Starting October 19</div>
+          <h4>Team stand-up</h4>
+          <p>Bryton, Adriano, and Jazzy. Progress, blockers, next steps, and Helix migration status. Replaces the daily check-ins after week two.</p>
+        </div>
+      </div>
+      <div class="sched-row">
+        <div class="sched-day">Bi-weekly, Wednesdays</div>
+        <div>
+          <div class="sched-tag">Starting October 14</div>
+          <h4>Bryton &amp; Adriano One-on-One</h4>
+          <p>Your agenda first, then Bryton's. Check-in on priorities, feedback, and development.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- HOW WE WORK -->
+<div class="wrap">
+  <section class="sec" id="cadence">
+    <div class="sec-tag">Cadence</div>
+    <h2>How we <em>work</em></h2>
+    <p class="sec-intro">The daily and weekly rhythms of the team.</p>
+
+    <h3 class="sub-heading">Daily</h3>
+    <div class="cadence-grid">
+      <div class="cadence-item">
+        <h4>Start of day</h4>
+        <p>Check Teams and email for anything urgent. Identify the one or two things that move the needle today.</p>
+      </div>
+      <div class="cadence-item">
+        <h4>End of day</h4>
+        <p>Share what moved, what is blocked, and what is next. Update your task status. If something is stuck, flag it; do not wait for the next meeting.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-heading sub-heading-gap">Weekly</h3>
+    <div class="cadence-grid">
+      <div class="cadence-item">
+        <h4>Monday</h4>
+        <p>Weekly stand-up with Bryton. Set the week's priorities. Review the Helix RAID log and flag anything that needs attention this week.</p>
+      </div>
+      <div class="cadence-item">
+        <h4>Thursday</h4>
+        <p>Helix demo session. Accept or reject features against acceptance criteria. Surface anything that changes the parity list or timeline.</p>
+      </div>
+      <div class="cadence-item">
+        <h4>Friday</h4>
+        <p>End-of-week check: what shipped, what slipped, what carries into next week. Update the GitHub project board so Monday's stand-up starts clean.</p>
+      </div>
+    </div>
+
+    <div class="callout warn" style="margin-top:20px;">
+      <i class="ri-shield-keyhole-line"></i>
+      <div>
+        <div class="ct">No client PII in Claude</div>
+        <p>Do not enter client names, account numbers, SINs, dates of birth, or any personally identifiable information into Claude. Anonymise and describe, do not paste. This applies to all AI tools.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- WORKING WITH BRYTON -->
+<div class="wrap">
+  <section class="sec" id="working">
+    <div class="sec-tag">Working style</div>
+    <h2>Working with <em>Bryton</em></h2>
+    <p class="sec-intro">A summary of how Bryton works. Read the full "working with me" document in Notion for more detail.</p>
+    <div class="wwm-list">
+      <div class="wwm-item"><i class="ri-checkbox-circle-fill"></i><span>Lead with the recommendation, then the reasoning. Be direct; no padding.</span></div>
+      <div class="wwm-item"><i class="ri-checkbox-circle-fill"></i><span>Say "I don't know" when unsure. Flag uncertainty. Separate fact from inference.</span></div>
+      <div class="wwm-item"><i class="ri-checkbox-circle-fill"></i><span>Ask when critical context is missing. Correct errors immediately.</span></div>
+      <div class="wwm-item"><i class="ri-checkbox-circle-fill"></i><span>Favour simple over complex. Daily or weekly stand-ups over heavy project management tooling.</span></div>
+      <div class="wwm-item"><i class="ri-checkbox-circle-fill"></i><span>Build outputs any teammate can reuse. No personal shortcuts, undocumented assumptions, or one-off formats.</span></div>
+      <div class="wwm-item"><i class="ri-checkbox-circle-fill"></i><span>Verify before sending. Financial figures independently checked. External claims cited.</span></div>
+    </div>
+
+    <div class="callout green" style="margin-top:20px;">
+      <i class="ri-information-line"></i>
+      <div>
+        <div class="ct">Full document</div>
+        <p>The complete "working with me" document is in Notion. <a href="https://app.notion.com/p/brytonudy/Working-with-Me-Bryton-Udy-1d8bcfdc94b58071a1d6ec438cce6641?source=copy_link" style="color:var(--green-bright);text-decoration:none;">Open in Notion &rarr;</a></p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+  <div class="foot">WealthCo. · Onboarding package · v1.2 · October 2026</div>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.sec[id]');
+const navLinks = document.querySelectorAll('.nav a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
+    }
+  });
+}, { rootMargin: '-80px 0px -60% 0px', threshold: 0 });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
